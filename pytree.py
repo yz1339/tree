@@ -23,7 +23,10 @@ def tree(directory):
 			d, prefix, indents = stack[-1]
 			stack = stack[:-1]
 			printD = d.split("/")[-1]
-			print(indents * '│   ' + prefix + printD)
+			if (i == len(dlist) - 1 and indents > 0):
+				print('    ' + (indents - 1) * '│   ' + prefix + printD)
+			else:
+				print(indents * '│   ' + prefix + printD)
 			if d not in discovered:
 				discovered.append(d)
 				newDir = os.path.join(directory, d)
